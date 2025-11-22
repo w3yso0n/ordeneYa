@@ -5,7 +5,7 @@ import { api } from '../../lib/api';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ShoppingCart, Plus, Minus, Trash2, Utensils, User, Users, Check } from 'lucide-react';
+import { ShoppingCart, Plus, Minus, Trash2, Utensils, User, Users, Check, Store } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -56,6 +56,10 @@ export default function ClientePage() {
     const [successOpen, setSuccessOpen] = useState(false);
     const [isCartOpen, setIsCartOpen] = useState(false);
     const [metodoPago, setMetodoPago] = useState<string>('');
+
+    // Business access state
+    const [showPasswordDialog, setShowPasswordDialog] = useState(false);
+    const [password, setPassword] = useState('');
 
     // Options Modal State
     const [selectedProduct, setSelectedProduct] = useState<Producto | null>(null);
@@ -188,6 +192,17 @@ export default function ClientePage() {
         return variant ? variant.precio : 0;
     };
 
+    const handleBusinessAccess = () => {
+        if (password === "chocoydani") {
+            setShowPasswordDialog(false);
+            setPassword("");
+            router.push("/negocio");
+        } else {
+            toast.error("Contraseña incorrecta");
+            setPassword("");
+        }
+    };
+
     return (
         <div className="min-h-screen bg-gradient-to-br from-violet-50 via-sky-50 to-emerald-50 pb-24">
             {/* Fixed Navbar */}
@@ -196,7 +211,7 @@ export default function ClientePage() {
                     <div className="bg-gradient-to-br from-violet-500 to-sky-500 p-2 rounded-xl shadow-lg">
                         <Utensils className="text-white w-5 h-5" />
                     </div>
-                    <h1 className="font-bold text-xl bg-gradient-to-r from-violet-600 to-sky-600 bg-clip-text text-transparent">OrdenEya</h1>
+                    <h1 className="font-bold text-xl bg-gradient-to-r from-violet-600 to-sky-600 bg-clip-text text-transparent">ElToldito</h1>
                 </div>
                 <div className="flex items-center gap-2">
                     {mode === 'waiter' && (
@@ -212,6 +227,15 @@ export default function ClientePage() {
                             🏠 Inicio
                         </Button>
                     </Link>
+                    <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => setShowPasswordDialog(true)}
+                        className="text-xs hover:bg-violet-50 hidden sm:flex gap-1"
+                    >
+                        <Store className="w-3 h-3" />
+                        Negocio
+                    </Button>
                     <Button
                         variant="ghost"
                         size="icon"
@@ -533,6 +557,44 @@ export default function ClientePage() {
                             }}
                         >
                             Entendido
+                        </Button>
+                    </DialogFooter>
+                </DialogContent>
+            </Dialog>
+
+            {/* Password Dialog for Business Access */}
+            <Dialog open={showPasswordDialog} onOpenChange={setShowPasswordDialog}>
+                <DialogContent className="sm:max-w-md bg-white">
+                    <DialogHeader>
+                        <DialogTitle>Acceso al Panel de Negocio</DialogTitle>
+                        <DialogDescription>
+                            Ingresa la contraseña para acceder al panel de administración
+                        </DialogDescription>
+                    </DialogHeader>
+                    <div className="py-4">
+                        <Input
+                            type="password"
+                            placeholder="Contraseña"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            onKeyDown={(e) => {
+                                if (e.key === "Enter") {
+                                    handleBusinessAccess()
+                                }
+                            }}
+                            className="w-full"
+                            autoFocus
+                        />
+                    </div>
+                    <DialogFooter>
+                        <Button variant="outline" onClick={() => {
+                            setShowPasswordDialog(false)
+                            setPassword("")
+                        }}>
+                            Cancelar
+                        </Button>
+                        <Button onClick={handleBusinessAccess}>
+                            Acceder
                         </Button>
                     </DialogFooter>
                 </DialogContent>

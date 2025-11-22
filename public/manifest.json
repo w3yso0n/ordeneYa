@@ -1,6 +1,6 @@
 {
-    "name": "OrdenEya",
-    "short_name": "OrdenEya",
+    "name": "ElToldito",
+    "short_name": "ElToldito",
     "description": "Gestión de pedidos para negocios",
     "start_url": "/",
     "display": "standalone",

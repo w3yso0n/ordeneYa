@@ -3,7 +3,7 @@
  */
 
 export const BUSINESS_INFO = {
-    name: "OrdenEya",
+    name: "ElToldito",
     description: "Gestión de pedidos sencilla y rápida para negocios pequeños",
 
     // Contact Information

@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { formatDistanceToNow } from 'date-fns';
 import { es } from 'date-fns/locale';
-import { ArrowRight, ArrowLeft, Clock, CheckCircle2, ChefHat, Package, Banknote, CreditCard, HelpCircle } from 'lucide-react';
+import { ArrowRight, ArrowLeft, Clock, CheckCircle2, ChefHat, Package, Banknote, CreditCard, HelpCircle, X } from 'lucide-react';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -41,6 +41,7 @@ const COLUMNS = [
     { id: 'PREPARANDO', title: 'Preparando', color: 'bg-yellow-50 border-yellow-200', icon: ChefHat, badgeColor: 'bg-yellow-500' },
     { id: 'LISTO', title: 'Listo', color: 'bg-green-50 border-green-200', icon: CheckCircle2, badgeColor: 'bg-green-500' },
     { id: 'ENTREGADO', title: 'Entregado', color: 'bg-slate-50 border-slate-200', icon: Package, badgeColor: 'bg-slate-500' },
+    { id: 'CANCELADO', title: 'Cancelado', color: 'bg-red-50 border-red-200', icon: X, badgeColor: 'bg-red-500' },
 ];
 
 export default function NegocioPage() {
@@ -214,25 +215,38 @@ export default function NegocioPage() {
                                                             )}
                                                         </div>
                                                     </CardContent>
-                                                    <CardFooter className="p-3 bg-slate-50 rounded-b-lg flex justify-between gap-2">
-                                                        {col.id !== 'RECIBIDO' ? (
-                                                            <Button
-                                                                variant="ghost"
-                                                                size="sm"
-                                                                onClick={() => handleStatusChange(pedido.id, getPrevStatus(col.id))}
-                                                                className="flex-1 hover:bg-slate-200"
-                                                            >
-                                                                <ArrowLeft className="w-4 h-4 mr-1" /> Atrás
-                                                            </Button>
-                                                        ) : <div className="flex-1"></div>}
+                                                    <CardFooter className="p-3 bg-slate-50 rounded-b-lg flex flex-col gap-2">
+                                                        <div className="flex justify-between gap-2 w-full">
+                                                            {col.id !== 'RECIBIDO' && col.id !== 'CANCELADO' ? (
+                                                                <Button
+                                                                    variant="ghost"
+                                                                    size="sm"
+                                                                    onClick={() => handleStatusChange(pedido.id, getPrevStatus(col.id))}
+                                                                    className="flex-1 hover:bg-slate-200"
+                                                                >
+                                                                    <ArrowLeft className="w-4 h-4 mr-1" /> Atrás
+                                                                </Button>
+                                                            ) : <div className="flex-1"></div>}
 
-                                                        {col.id !== 'ENTREGADO' && (
+                                                            {col.id !== 'ENTREGADO' && col.id !== 'CANCELADO' && (
+                                                                <Button
+                                                                    size="sm"
+                                                                    onClick={() => handleStatusChange(pedido.id, getNextStatus(col.id))}
+                                                                    className={`flex-1 ${col.id === 'LISTO' ? 'bg-slate-800 hover:bg-slate-900' : 'bg-sky-500 hover:bg-sky-600'}`}
+                                                                >
+                                                                    {col.id === 'LISTO' ? 'Entregar' : 'Avanzar'} <ArrowRight className="w-4 h-4 ml-1" />
+                                                                </Button>
+                                                            )}
+                                                        </div>
+
+                                                        {col.id !== 'CANCELADO' && col.id !== 'ENTREGADO' && (
                                                             <Button
+                                                                variant="destructive"
                                                                 size="sm"
-                                                                onClick={() => handleStatusChange(pedido.id, getNextStatus(col.id))}
-                                                                className={`flex-1 ${col.id === 'LISTO' ? 'bg-slate-800 hover:bg-slate-900' : 'bg-sky-500 hover:bg-sky-600'}`}
+                                                                onClick={() => handleStatusChange(pedido.id, 'CANCELADO')}
+                                                                className="w-full bg-red-500 hover:bg-red-600"
                                                             >
-                                                                {col.id === 'LISTO' ? 'Entregar' : 'Avanzar'} <ArrowRight className="w-4 h-4 ml-1" />
+                                                                <X className="w-4 h-4 mr-1" /> Cancelar Pedido
                                                             </Button>
                                                         )}
                                                     </CardFooter>
