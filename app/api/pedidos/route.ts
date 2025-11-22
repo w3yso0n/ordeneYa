@@ -1,3 +1,5 @@
+// app/api/pedidos/route.ts
+
 import { NextResponse } from 'next/server';
 import { query, getConnection } from '@/lib/db';
 import { RowDataPacket, ResultSetHeader } from 'mysql2';
