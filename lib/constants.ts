@@ -4,7 +4,8 @@
 
 export const BUSINESS_INFO = {
     name: "ElToldito",
-    description: "Gestión de pedidos sencilla y rápida para negocios pequeños",
+
+    description: "ElToldito es un restaurante de mariscos que ofrece una experiencia culinaria única y memorable para sus clientes.",
 
     // Contact Information
     phones: [
