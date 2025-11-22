@@ -1,13 +1,13 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { query } from '@/lib/db';
 import { ResultSetHeader } from 'mysql2';
 
 export async function PATCH(
-    request: Request,
-    { params }: { params: { id: string } }
+    request: NextRequest,
+    context: { params: Promise<{ id: string }> }
 ) {
     try {
-        const { id } = params;
+        const { id } = await context.params;
         const body = await request.json();
         const { estado, metodoPago } = body;
 
