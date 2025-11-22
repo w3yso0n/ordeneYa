@@ -83,33 +83,33 @@ export default function NegocioPage() {
     if (error) return <div className="p-8 text-center text-red-500">Error al cargar pedidos</div>;
 
     return (
-        <div className="min-h-screen bg-slate-50 p-4 md:p-6">
-            <header className="mb-8 flex flex-col md:flex-row justify-between items-center gap-4">
-                <div className="flex items-center gap-3">
+        <div className="min-h-screen bg-slate-50 p-2 sm:p-4 md:p-6">
+            <header className="mb-4 sm:mb-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-3 sm:gap-4">
+                <div className="flex items-center gap-2 sm:gap-3">
                     <div className="bg-slate-900 p-2 rounded-lg">
-                        <ChefHat className="text-white w-6 h-6" />
+                        <ChefHat className="text-white w-5 h-5 sm:w-6 sm:h-6" />
                     </div>
-                    <h1 className="text-3xl font-bold text-slate-900">Panel de Cocina</h1>
+                    <h1 className="text-2xl sm:text-3xl font-bold text-slate-900">Panel de Cocina</h1>
                 </div>
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-2 sm:gap-4 flex-wrap">
                     <Link href="/negocio/productos">
-                        <Button variant="outline" className="bg-white">
-                            Gestionar Productos
+                        <Button variant="outline" size="sm" className="bg-white text-xs sm:text-sm">
+                            <span className="hidden sm:inline">Gestionar </span>Productos
                         </Button>
                     </Link>
                     <Link href="/negocio/reportes">
-                        <Button variant="outline" className="bg-white border-sky-200 text-sky-700 hover:bg-sky-50">
-                            📊 Reportes
+                        <Button variant="outline" size="sm" className="bg-white border-sky-200 text-sky-700 hover:bg-sky-50 text-xs sm:text-sm">
+                            📊 <span className="hidden sm:inline">Reportes</span>
                         </Button>
                     </Link>
-                    <Badge variant="outline" className="bg-white px-3 py-1">
+                    <Badge variant="outline" className="bg-white px-2 sm:px-3 py-1 text-xs">
                         <span className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
                         En vivo
                     </Badge>
                 </div>
             </header>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 overflow-x-auto pb-4 h-[calc(100vh-140px)]">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-3 sm:gap-6 overflow-x-auto pb-4 md:h-[calc(100vh-140px)]">
                 {COLUMNS.map((col) => (
                     <div key={col.id} className={`flex flex-col rounded-xl border-2 ${col.color} h-full bg-white/50 backdrop-blur-sm`}>
                         <div className={`p-4 border-b ${col.color.split(' ')[1]} bg-white/80 rounded-t-xl flex justify-between items-center sticky top-0 z-10`}>

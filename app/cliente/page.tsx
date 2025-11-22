@@ -215,26 +215,28 @@ export default function ClientePage() {
                 </div>
                 <div className="flex items-center gap-2">
                     {mode === 'waiter' && (
-                        <Badge variant="secondary" className="text-sm bg-violet-100 text-violet-700 border-violet-200">Mesa 1</Badge>
+                        <Badge variant="secondary" className="text-sm bg-violet-100 text-violet-700 border-violet-200 hidden sm:flex">Mesa 1</Badge>
                     )}
                     <Link href="/contacto">
-                        <Button variant="ghost" size="sm" className="text-xs hover:bg-violet-50 hidden sm:flex">
-                            📍 Contacto
+                        <Button variant="ghost" size="sm" className="text-xs hover:bg-violet-50">
+                            <span className="hidden sm:inline">📍 Contacto</span>
+                            <span className="sm:hidden">📍</span>
                         </Button>
                     </Link>
                     <Link href="/">
-                        <Button variant="ghost" size="sm" className="text-xs hover:bg-violet-50 hidden sm:flex">
-                            🏠 Inicio
+                        <Button variant="ghost" size="sm" className="text-xs hover:bg-violet-50">
+                            <span className="hidden sm:inline">🏠 Inicio</span>
+                            <span className="sm:hidden">🏠</span>
                         </Button>
                     </Link>
                     <Button
                         variant="ghost"
                         size="sm"
                         onClick={() => setShowPasswordDialog(true)}
-                        className="text-xs hover:bg-violet-50 hidden sm:flex gap-1"
+                        className="text-xs hover:bg-violet-50 gap-1"
                     >
                         <Store className="w-3 h-3" />
-                        Negocio
+                        <span className="hidden sm:inline">Negocio</span>
                     </Button>
                     <Button
                         variant="ghost"
@@ -262,23 +264,23 @@ export default function ClientePage() {
                     <div className="inline-flex bg-white/80 backdrop-blur-md rounded-2xl p-1.5 shadow-lg border border-violet-100/50">
                         <button
                             onClick={() => setMode('waiter')}
-                            className={`flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${mode === 'waiter'
+                            className={`flex items-center gap-1 sm:gap-2 px-3 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold text-sm sm:text-base transition-all duration-300 ${mode === 'waiter'
                                 ? 'bg-gradient-to-br from-violet-500 to-sky-500 text-white shadow-lg shadow-violet-200'
                                 : 'text-slate-600 hover:text-slate-900'
                                 }`}
                         >
                             <Users className="w-4 h-4" />
-                            Modo Mesero
+                            <span className="hidden xs:inline">Modo </span>Mesero
                         </button>
                         <button
                             onClick={() => setMode('customer')}
-                            className={`flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${mode === 'customer'
+                            className={`flex items-center gap-1 sm:gap-2 px-3 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold text-sm sm:text-base transition-all duration-300 ${mode === 'customer'
                                 ? 'bg-gradient-to-br from-violet-500 to-sky-500 text-white shadow-lg shadow-violet-200'
                                 : 'text-slate-600 hover:text-slate-900'
                                 }`}
                         >
                             <User className="w-4 h-4" />
-                            Modo Cliente
+                            <span className="hidden xs:inline">Modo </span>Cliente
                         </button>
                     </div>
                 </div>

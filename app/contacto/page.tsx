@@ -159,7 +159,7 @@ export default function ContactoPage() {
                         <Card className="border-violet-100/50 bg-white/80 backdrop-blur-sm shadow-lg">
 
                             <CardContent className="p-0">
-                                <div className="w-full h-[580px] rounded-b-lg overflow-hidden">
+                                <div className="w-full h-64 sm:h-96 lg:h-[580px] rounded-b-lg overflow-hidden">
                                     <iframe
                                         src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3020.710807254279!2d-103.36152276510559!3d20.574147438207284!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8428b2aa89839e3b%3A0x6e0a7ac891022bd9!2sC.%20Incalpa%2042%2C%20Lopez%20Cotilla%2C%2045615%20San%20Pedro%20Tlaquepaque%2C%20Jal.!5e0!3m2!1ses-419!2smx!4v1763835005585!5m2!1ses-419!2smx`}
                                         width="100%"
