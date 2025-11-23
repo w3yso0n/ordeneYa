@@ -403,6 +403,49 @@ export default function ClientePage() {
                 </DrawerContent>
             </Drawer>
 
+            {/* DIALOG DE VARIANTES */}
+            <Dialog open={optionsModalOpen} onOpenChange={setOptionsModalOpen}>
+                <DialogContent className="bg-gradient-to-br from-violet-50 to-sky-50">
+                    <DialogHeader>
+                        <DialogTitle className="text-2xl bg-gradient-to-r from-violet-600 to-sky-600 bg-clip-text text-transparent">
+                            {selectedProduct?.nombre}
+                        </DialogTitle>
+                        <DialogDescription>
+                            Selecciona una opción
+                        </DialogDescription>
+                    </DialogHeader>
+
+                    <div className="py-4">
+                        <RadioGroup value={selectedVariantId} onValueChange={setSelectedVariantId}>
+                            {selectedProduct?.variantes?.map((variante) => (
+                                <div key={variante.id} className="flex items-center space-x-3 p-3 rounded-lg hover:bg-white/50 transition-colors">
+                                    <RadioGroupItem value={variante.id.toString()} id={`variant-${variante.id}`} />
+                                    <Label htmlFor={`variant-${variante.id}`} className="flex-1 cursor-pointer">
+                                        <div className="flex justify-between items-center">
+                                            <span className="font-medium text-slate-800">{variante.nombre}</span>
+                                            <span className="font-bold text-violet-600">${variante.precio}</span>
+                                        </div>
+                                    </Label>
+                                </div>
+                            ))}
+                        </RadioGroup>
+                    </div>
+
+                    <DialogFooter className="gap-2">
+                        <Button variant="outline" onClick={() => setOptionsModalOpen(false)}>
+                            Cancelar
+                        </Button>
+                        <Button
+                            onClick={confirmOptions}
+                            className="bg-gradient-to-r from-violet-500 to-sky-500 hover:from-violet-600 hover:to-sky-600 text-white"
+                        >
+                            <Plus className="w-4 h-4 mr-2" />
+                            Agregar al Carrito
+                        </Button>
+                    </DialogFooter>
+                </DialogContent>
+            </Dialog>
+
             {/* DIALOG DE ÉXITO */}
             <Dialog open={successOpen} onOpenChange={setSuccessOpen}>
                 <DialogContent>
