@@ -230,7 +230,7 @@ export default function ContactoPage() {
                     <Card className="border-violet-100/50 bg-gradient-to-br from-violet-500 to-sky-500 text-white shadow-xl">
                         <CardContent className="py-8">
                             <h2 className="text-3xl font-bold mb-4">¿Listo para ordenar?</h2>
-                            <p className="text-lg mb-6 text-violet-50">
+                            <p className="text-lg mb-6 text-white">
                                 Visita nuestro menú y realiza tu pedido ahora
                             </p>
                             <Link href="/cliente">

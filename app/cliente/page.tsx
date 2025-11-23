@@ -207,13 +207,13 @@ export default function ClientePage() {
 
                 <div className="flex items-center gap-2">
                     <Link href="/contacto">
-                        <Button variant="ghost" size="sm" className="text-xs hover:bg-violet-50">
+                        <Button variant="ghost" size="sm" className="text-xs hover:bg-violet-50 text-slate-700">
                             Contacto
                         </Button>
                     </Link>
 
                     <Link href="/">
-                        <Button variant="ghost" size="sm" className="text-xs hover:bg-violet-50">
+                        <Button variant="ghost" size="sm" className="text-xs hover:bg-violet-50 text-slate-700">
                             Inicio
                         </Button>
                     </Link>
@@ -221,7 +221,7 @@ export default function ClientePage() {
                     <Button
                         variant="ghost"
                         size="sm"
-                        className="text-xs hover:bg-violet-50 gap-1"
+                        className="text-xs hover:bg-violet-50 gap-1 text-slate-700"
                         onClick={() => setShowPasswordDialog(true)}
                     >
                         <Store className="w-3 h-3" />
@@ -337,9 +337,9 @@ export default function ClientePage() {
                                     <motion.div
                                         initial={{ opacity: 0 }}
                                         animate={{ opacity: 1 }}
-                                        className="text-center py-12 text-slate-400"
+                                        className="text-center py-12 text-slate-600"
                                     >
-                                        <ShoppingCart className="w-16 h-16 mx-auto mb-4 opacity-20" />
+                                        <ShoppingCart className="w-16 h-16 mx-auto mb-4 opacity-30" />
                                         Carrito vacío
                                     </motion.div>
                                 ) : cart.map((item, idx) => (
@@ -469,7 +469,7 @@ export default function ClientePage() {
 
             {/* DIALOG NEGOCIO */}
             <Dialog open={showPasswordDialog} onOpenChange={setShowPasswordDialog}>
-                <DialogContent>
+                <DialogContent className="bg-white">
                     <DialogHeader>
                         <DialogTitle>Acceso al Panel</DialogTitle>
                         <DialogDescription>Ingresa la contraseña</DialogDescription>

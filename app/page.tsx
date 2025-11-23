@@ -50,7 +50,7 @@ export default function Home() {
         <div className="mt-8">
           <button
             onClick={() => setShowPasswordDialog(true)}
-            className="text-xs text-slate-400 hover:text-slate-600 transition-colors flex items-center gap-1 mx-auto"
+            className="text-xs text-slate-700 hover:text-slate-900 transition-colors flex items-center gap-1 mx-auto"
           >
             <Store className="w-3 h-3" />
             Panel de negocio

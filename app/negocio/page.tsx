@@ -93,7 +93,7 @@ export default function NegocioPage() {
                 </div>
                 <div className="flex items-center gap-2 sm:gap-4 flex-wrap">
                     <Link href="/negocio/productos">
-                        <Button variant="outline" size="sm" className="bg-white text-xs sm:text-sm">
+                        <Button variant="outline" size="sm" className="bg-white text-xs sm:text-sm text-slate-700">
                             <span className="hidden sm:inline">Gestionar </span>Productos
                         </Button>
                     </Link>
@@ -102,7 +102,7 @@ export default function NegocioPage() {
                             📊 <span className="hidden sm:inline">Reportes</span>
                         </Button>
                     </Link>
-                    <Badge variant="outline" className="bg-white px-2 sm:px-3 py-1 text-xs">
+                    <Badge variant="outline" className="bg-white px-2 sm:px-3 py-1 text-xs text-slate-700">
                         <span className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
                         En vivo
                     </Badge>
@@ -152,7 +152,7 @@ export default function NegocioPage() {
                                                 <Card className="border-slate-200 shadow-sm hover:shadow-md transition-shadow">
                                                     <CardHeader className="p-4 pb-2">
                                                         <div className="flex justify-between items-start">
-                                                            <Badge variant="outline" className="font-mono text-xs">
+                                                            <Badge variant="outline" className="font-mono text-xs text-slate-700">
                                                                 #{pedido.id}
                                                             </Badge>
                                                             <span className="text-xs text-slate-500 font-medium flex items-center gap-1">
@@ -173,7 +173,7 @@ export default function NegocioPage() {
                                                                     </div>
                                                                     {/* @ts-ignore */}
                                                                     {item.opcionesSeleccionadas && (
-                                                                        <div className="text-xs text-slate-400 mt-0.5 pl-4">
+                                                                        <div className="text-xs text-slate-600 mt-0.5 pl-4">
                                                                             {/* @ts-ignore */}
                                                                             {Object.entries(item.opcionesSeleccionadas).map(([key, value]) => (
                                                                                 <span key={key} className="block">
@@ -188,7 +188,7 @@ export default function NegocioPage() {
                                                             ))}
                                                         </div>
                                                         <div className="flex justify-between items-center pt-2 border-t border-slate-100">
-                                                            <span className="text-xs text-slate-400">Total</span>
+                                                            <span className="text-xs text-slate-600">Total</span>
                                                             <span className="font-bold text-lg text-slate-900">${pedido.total}</span>
                                                         </div>
 
@@ -222,7 +222,7 @@ export default function NegocioPage() {
                                                                     variant="ghost"
                                                                     size="sm"
                                                                     onClick={() => handleStatusChange(pedido.id, getPrevStatus(col.id))}
-                                                                    className="flex-1 hover:bg-slate-200"
+                                                                    className="flex-1 hover:bg-slate-200 text-slate-700"
                                                                 >
                                                                     <ArrowLeft className="w-4 h-4 mr-1" /> Atrás
                                                                 </Button>
