@@ -361,11 +361,11 @@ export default function ClientePage() {
                                         </div>
 
                                         <div className="flex items-center gap-2">
-                                            <Button variant="outline" size="icon" onClick={() => updateQuantity(idx, -1)}>
+                                            <Button variant="outline" size="icon" onClick={() => updateQuantity(idx, -1)} className="text-slate-700">
                                                 <Minus className="w-3 h-3" />
                                             </Button>
                                             <span className="w-8 text-center font-bold">{item.cantidad}</span>
-                                            <Button variant="outline" size="icon" onClick={() => updateQuantity(idx, 1)}>
+                                            <Button variant="outline" size="icon" onClick={() => updateQuantity(idx, 1)} className="text-slate-700">
                                                 <Plus className="w-3 h-3" />
                                             </Button>
                                             <Button variant="ghost" size="icon" onClick={() => removeFromCart(idx)}>
@@ -388,7 +388,7 @@ export default function ClientePage() {
                                 placeholder="Tu nombre"
                                 value={nombre}
                                 onChange={(e) => setNombre(e.target.value)}
-                                className="mb-4"
+                                className="mb-4 text-slate-700"
                             />
 
                             <Button
@@ -432,7 +432,7 @@ export default function ClientePage() {
                     </div>
 
                     <DialogFooter className="gap-2">
-                        <Button variant="outline" onClick={() => setOptionsModalOpen(false)}>
+                        <Button variant="outline" onClick={() => setOptionsModalOpen(false)} className="text-slate-700">
                             Cancelar
                         </Button>
                         <Button
@@ -448,22 +448,34 @@ export default function ClientePage() {
 
             {/* DIALOG DE ÉXITO */}
             <Dialog open={successOpen} onOpenChange={setSuccessOpen}>
-                <DialogContent>
-                    <DialogHeader>
-                        <DialogTitle>Pedido enviado</DialogTitle>
-                        <DialogDescription>Tu orden fue registrada correctamente</DialogDescription>
-                    </DialogHeader>
+                <DialogContent className="bg-gradient-to-br from-violet-50 via-white to-sky-50 border-2 border-violet-200">
+                    <div className="text-center py-6">
+                        <div className="mb-4">
+                            <div className="text-7xl mb-4 animate-bounce">🎉</div>
+                            <DialogTitle className="text-3xl font-bold bg-gradient-to-r from-violet-600 to-sky-600 bg-clip-text text-transparent mb-3">
+                                ¡Pedido Recibido!
+                            </DialogTitle>
+                            <DialogDescription className="text-lg text-slate-600 px-4">
+                                Tu orden ha sido enviada.<br />
+                                <span className="font-semibold text-violet-600">Te avisaremos cuando esté lista.</span>
+                            </DialogDescription>
+                        </div>
 
-                    <DialogFooter>
+                        <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 mb-6 border border-violet-100">
+                            <p className="text-sm text-slate-500 mb-2">Gracias por tu preferencia</p>
+                            <p className="text-2xl font-bold text-slate-800">¡Buen provecho! 🍽️</p>
+                        </div>
+
                         <Button
                             onClick={() => {
                                 setSuccessOpen(false);
                                 router.push('/');
                             }}
+                            className="w-full bg-gradient-to-r from-violet-500 to-sky-500 hover:from-violet-600 hover:to-sky-600 text-white font-semibold text-lg py-6 shadow-lg hover:shadow-xl transition-all"
                         >
-                            Entendido
+                            ¡Perfecto!
                         </Button>
-                    </DialogFooter>
+                    </div>
                 </DialogContent>
             </Dialog>
 
@@ -471,8 +483,8 @@ export default function ClientePage() {
             <Dialog open={showPasswordDialog} onOpenChange={setShowPasswordDialog}>
                 <DialogContent className="bg-white">
                     <DialogHeader>
-                        <DialogTitle>Acceso al Panel</DialogTitle>
-                        <DialogDescription>Ingresa la contraseña</DialogDescription>
+                        <DialogTitle className="text-slate-800">Acceso al Panel</DialogTitle>
+                        <DialogDescription className="text-slate-600">Ingresa la contraseña</DialogDescription>
                     </DialogHeader>
 
                     <Input
@@ -486,10 +498,10 @@ export default function ClientePage() {
                     />
 
                     <DialogFooter>
-                        <Button variant="outline" onClick={() => setShowPasswordDialog(false)}>
+                        <Button variant="outline" onClick={() => setShowPasswordDialog(false)} className="text-slate-700">
                             Cancelar
                         </Button>
-                        <Button onClick={handleBusinessAccess}>
+                        <Button onClick={handleBusinessAccess} className="text-white bg-gradient-to-r from-violet-500 to-sky-500 hover:from-violet-600 hover:to-sky-600">
                             Acceder
                         </Button>
                     </DialogFooter>
